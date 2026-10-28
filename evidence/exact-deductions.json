@@ -1,0 +1,53 @@
+{
+  "scope": "Exact elementary deductions from stated theorem hypotheses; not a rerun or a new proof of the manuscript theorem.",
+  "manuscript_sha256": "74af3faa5cb535ff641bca0f6cb0db1ca4df9f11b90353a57b48bf1e9174009b",
+  "main_example": {
+    "h": "(1/5000) sin(2y) e_x",
+    "A_minus1_h": "1/10000",
+    "A2_h": "1/1250",
+    "A_minus1_u0": "30001/10000",
+    "heat_seed_X_squared": "900048001/200000000",
+    "elementary_zero_center_contraction_factor_squared": "900048001/100000000",
+    "E0": "75000001/50000000",
+    "X0": "18750001/12500000",
+    "E0_X0_over2": "1406250093750001/1250000000000000"
+  },
+  "rate_deductions": [
+    {
+      "X_error_target": "1/100",
+      "least_iteration_from_stated_bound": 64,
+      "bound_exact": "48519278097689642681155855396759336072749841943521979872827/5000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "X_error_target": "1/1000",
+      "least_iteration_from_stated_bound": 86,
+      "bound_exact": "47780373265559358009192445772039644256794138579444188363337645975725833060824587/50000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "X_error_target": "1/1000000",
+      "least_iteration_from_stated_bound": 152,
+      "bound_exact": "45630493019529458663775342460696105322154565208445812157160063359456332392499692197933402051896313796083494813532664680937837577588565258188667/50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "coordinate_change": "P swaps x and y, (Tf)(x)=P f(P^T x); checked T U=W",
+  "strict_class_witnesses": {
+    "amplitude": {
+      "u0": "W",
+      "min_A2_distance_from_prior_segment": "9/10",
+      "prior_radius": "1/100"
+    },
+    "same_amplitude_perturbation": {
+      "u0": "(7/10)W+(1/100)sin(2y)e_x",
+      "A_minus1_h": "1/200",
+      "min_A2_distance_from_prior_segment": "1/25",
+      "prior_radius": "1/100"
+    }
+  },
+  "high_frequency_family": {
+    "h_m": "(m/10000)sin(my)e_x, integer m>=2",
+    "A_minus1": "1/10000",
+    "A2": "m^3/10000",
+    "Hdot_s": "m^(s+1)/(10000*sqrt(2))"
+  },
+  "checks_passed": true
+}

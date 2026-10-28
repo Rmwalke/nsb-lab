@@ -1,0 +1,43 @@
+{
+  "status": "ALL_CHECKS_PASSED",
+  "scope": "Cross-language floating solver check, not rigorous PDE error bound",
+  "checks": [
+    {
+      "cutoff": 2,
+      "stepDenominator": 64,
+      "modes": 32,
+      "interiorPairs": 426,
+      "maxFinalCoefficientDifferenceFromPython": 1.7314558184300572e-19,
+      "A0DifferenceFromPython": 0,
+      "elapsedMilliseconds": 7.0264159999999976
+    },
+    {
+      "cutoff": 2,
+      "stepDenominator": 128,
+      "modes": 32,
+      "interiorPairs": 426,
+      "maxFinalCoefficientDifferenceFromPython": 1.678458517215647e-19,
+      "A0DifferenceFromPython": 0,
+      "elapsedMilliseconds": 5.945909
+    },
+    {
+      "cutoff": 3,
+      "stepDenominator": 64,
+      "modes": 122,
+      "interiorPairs": 6642,
+      "maxFinalCoefficientDifferenceFromPython": 6.938893903907228e-18,
+      "A0DifferenceFromPython": 1.3322676295501878e-15,
+      "elapsedMilliseconds": 20.628501
+    },
+    {
+      "cutoff": 3,
+      "stepDenominator": 128,
+      "modes": 122,
+      "interiorPairs": 6642,
+      "maxFinalCoefficientDifferenceFromPython": 3.7151756694621844e-19,
+      "A0DifferenceFromPython": 0,
+      "elapsedMilliseconds": 15.288645000000002
+    }
+  ],
+  "exactShearMaxCoefficientError": 3.042011087472929e-12
+}

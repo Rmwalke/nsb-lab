@@ -1,0 +1,106 @@
+{
+  "method": "Independent literal complex Fourier convolution and Gauss-Legendre evaluation of SW-Q(w1,w1); no solver/certificate implementation used for these references.",
+  "scope": "Numerical consistency validation; not a rigorous interval enclosure or independent proof of the manuscript theorem.",
+  "field_checks": {
+    "B_WW_minus_literal_F_max": 0.0,
+    "B_WF_plus_B_FW_minus_literal_G_max": 0.0,
+    "W_modes": 6,
+    "F_modes": 12,
+    "C_modes": 12,
+    "H_modes": 24
+  },
+  "times": [
+    {
+      "time": 0.0,
+      "explicit_vs_duhamel64_max_coefficient": 0.0,
+      "quadrature32_vs64_max_coefficient": 0.0,
+      "residual_formula_vs_direct_max_coefficient": 0,
+      "w2_active_modes": 6,
+      "w2_max_mode_squared": 1,
+      "residual_active_modes_above_1e_minus14": 0,
+      "residual_max_mode_squared_above_1e_minus14": 0,
+      "max_divergence_coefficient": 0.0,
+      "max_reality_defect": 0.0,
+      "normalized_l2": 1.224744871391589
+    },
+    {
+      "time": 0.0625,
+      "explicit_vs_duhamel64_max_coefficient": 7.589415207398531e-19,
+      "quadrature32_vs64_max_coefficient": 1.734723475976807e-18,
+      "residual_formula_vs_direct_max_coefficient": 3.8760227666356784e-17,
+      "w2_active_modes": 54,
+      "w2_max_mode_squared": 6,
+      "residual_active_modes_above_1e_minus14": 342,
+      "residual_max_mode_squared_above_1e_minus14": 22,
+      "max_divergence_coefficient": 8.470329472543003e-22,
+      "max_reality_defect": 0.0,
+      "normalized_l2": 1.1504993530551355
+    },
+    {
+      "time": 0.125,
+      "explicit_vs_duhamel64_max_coefficient": 6.938893903907228e-18,
+      "quadrature32_vs64_max_coefficient": 3.469446951953614e-18,
+      "residual_formula_vs_direct_max_coefficient": 5.377642775528102e-17,
+      "w2_active_modes": 54,
+      "w2_max_mode_squared": 6,
+      "residual_active_modes_above_1e_minus14": 342,
+      "residual_max_mode_squared_above_1e_minus14": 22,
+      "max_divergence_coefficient": 6.776263578034403e-21,
+      "max_reality_defect": 0.0,
+      "normalized_l2": 1.0805495523483462
+    },
+    {
+      "time": 0.25,
+      "explicit_vs_duhamel64_max_coefficient": 2.710505431213761e-19,
+      "quadrature32_vs64_max_coefficient": 5.551115123125783e-17,
+      "residual_formula_vs_direct_max_coefficient": 6.765421556309548e-17,
+      "w2_active_modes": 54,
+      "w2_max_mode_squared": 6,
+      "residual_active_modes_above_1e_minus14": 342,
+      "residual_max_mode_squared_above_1e_minus14": 22,
+      "max_divergence_coefficient": 2.710505431213761e-20,
+      "max_reality_defect": 0.0,
+      "normalized_l2": 0.9521918035996747
+    }
+  ],
+  "implementation_comparison": {
+    "implementation_file": "/workspace/scratch/83e96c97fd4b/work/nsb_w2_comparison/w2_reference.py",
+    "implementation_sha256": "a043661ca14f92a639c410c486fb2d521f2b0ad422d91c8c22befdf8bf47a3ff",
+    "basis_max_coefficient_errors": {
+      "W": 0.0,
+      "F": 0.0,
+      "C": 0.0,
+      "H": 6.938893903907228e-18
+    },
+    "times": [
+      {
+        "time": 0.0,
+        "implementation_vs_independent_duhamel_max_coefficient": 0.0,
+        "active_support_matches": true,
+        "implementation_active_modes": 6,
+        "independent_active_modes": 6
+      },
+      {
+        "time": 0.0625,
+        "implementation_vs_independent_duhamel_max_coefficient": 1.734723475976807e-18,
+        "active_support_matches": true,
+        "implementation_active_modes": 54,
+        "independent_active_modes": 54
+      },
+      {
+        "time": 0.125,
+        "implementation_vs_independent_duhamel_max_coefficient": 5.551115123125783e-17,
+        "active_support_matches": true,
+        "implementation_active_modes": 54,
+        "independent_active_modes": 54
+      },
+      {
+        "time": 0.25,
+        "implementation_vs_independent_duhamel_max_coefficient": 2.3459491801784755e-19,
+        "active_support_matches": true,
+        "implementation_active_modes": 54,
+        "independent_active_modes": 54
+      }
+    ]
+  }
+}

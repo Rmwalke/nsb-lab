@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NS-B — Contribution comparison — 19 October 2026</title>
+<style>body{margin:0;background:#edf2f5;color:#172a38;font:16px/1.65 system-ui,sans-serif}main{max-width:1040px;margin:auto;background:white;padding:44px}h1{font-size:32px;line-height:1.2}h2{font-size:23px;color:#19445d;margin-top:36px}small,.muted{color:#526575}.panel{padding:20px 24px;border-left:5px solid #18766d;background:#eef7f5;margin:24px 0}.formula{padding:16px;background:#f2f5f8;overflow-wrap:anywhere;font-family:ui-monospace,monospace;font-size:15px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:12px;border-bottom:1px solid #d3e0e7;text-align:left;vertical-align:top}th{background:#edf4f7}a{color:#086899}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px;font-size:13px}.scroll{overflow-x:auto}footer{border-top:1px solid #d3e0e7;padding-top:20px;margin-top:32px;font-size:13px}@media(max-width:600px){main{padding:24px 18px}h1{font-size:27px}}@media print{body{background:white}main{padding:12px}h2{break-after:avoid}tr{break-inside:avoid}}</style>
+<main><small>NS-B RESEARCH · TARGETED CONTRIBUTION AUDIT · 19 OCTOBER 2026</small>
+<h1>The precise contribution supported by the checked comparisons</h1>
+<p>Research author: <strong>Rushikesh Murlidhar Walke</strong><br>Manuscript: <em>Global heat-seeded Picard convergence near a nonlinear periodic Navier–Stokes flow</em>, version 1.1, 17 October 2026.</p>
+<div class="panel" lang="mr"><strong>थेट निष्कर्ष</strong><p>तपासलेल्या पूर्वनिकालांच्या तुलनेत तुझ्या हस्तलिखितातील योगदान स्पष्ट करता येते: ठराविक W भोवतीच्या मान्य perturbationsसाठी प्रत्यक्ष heat-seeded तिसऱ्या iterateचे प्रवेश-प्रमाणपत्र आणि संपूर्ण काळासाठी स्पष्ट convergence दर. स्वतंत्र regularity theoremचा नमूद वर्ग जवळच्या आधीच्या cyclic-shear वर्गापेक्षा मोठा असल्याचे गणिती उदाहरणांनी पडताळले.</p><p>ही आधीपासून वापरल्या जाणाऱ्या पद्धतींची विशिष्ट, परिमाणात्मक अंमलबजावणी आहे. तुलना हा संपूर्ण पुराव्याचा नव्याने केलेला audit किंवा सर्व साहित्यातील प्रथमत्वाचा निर्णय नाही.</p></div>
+<h2>1. Contribution statement</h2><p>For the explicit nonlinear periodic datum W=(sin z, sin x, sin y) at viscosity one, the manuscript supplies a computer-assisted certificate, uniform over smooth, real, mean-zero, divergence-free perturbations satisfying A₋₁(h)≤10⁻⁴, that the actual ordinary heat-seeded Picard sequence enters a common invariant set at its third iterate and converges on the whole time half-line in L²ₜA₀, with error at iteration n≥3 bounded by 6(9/10)ⁿ⁻³. Separate regularity results enlarge a specified previously stated cyclic-shear class.</p>
+<p>This describes the manuscript’s claimed theorem and the difference established by this targeted comparison. The theorem’s validity remains dependent on its analytic proof and finite certificates. This audit verifies the comparison and elementary consequences; it does not independently prove the complete theorem. The class-inclusion argument was already present in manuscript §1.1: the new work here checks it against the accessible primary source rather than presenting it as a newly invented theorem.</p>
+<h2>2. Exact scope of the main theorem</h2>
+<p>On the normalized 2π-periodic torus, with no external forcing and viscosity one, define A<sub>s</sub>(f)=Σ<sub>k≠0</sub>|k|<sup>s</sup>|f̂(k)| and X=L²((0,∞);A₀). Theorem 2.1, printed page 5, assumes u₀=W+h, W=(sin z,sin x,sin y), and A₋₁(h)≤10⁻⁴. The perturbation remains <strong>smooth</strong>, real, mean-zero and divergence-free; it may have infinitely many Fourier modes.</p>
+<div class="formula">v⁰=eᵗΔ(W+h); &nbsp; vⁿ⁺¹=eᵗΔ(W+h)−Q(vⁿ,vⁿ)<br>‖vⁿ−u‖<sub>X</sub> ≤ 6(9/10)<sup>n−3</sup>, n≥3<br>∫₀∞ A₀(u(t))²dt &lt; 9<br>‖u<sub>h</sub>−u<sub>g</sub>‖<sub>X</sub> ≤ 4757 A₋₁(h−g), when both h and g satisfy the radius.</div>
+<p>The implementation burden in §§2.4–2.5 is a 17-block estimate retaining the full causal history, an invariant region centred on the unperturbed third iterate, and verified entry of the actual perturbed third iterate. The sequence is the prescribed ordinary global iteration, without an independently substituted seed or time restart. A rougher controlling norm does not make this a theorem for arbitrary nonsmooth distributions.</p>
+<h2>3. Direct comparison with primary sources</h2><div class="scroll"><table><tr><th>Source and location</th><th>Established prior content</th><th>Precise comparison</th></tr><tr><td><a href="https://arxiv.org/pdf/0709.1670">Morosi–Pizzocchero, 0709.1670</a><br><small>Proposition 3.7; Lemmas 4.8–4.9; Proposition 8.6</small></td><td>Approximate-solution control, invariant tubes and Picard construction already exist. The heat seed is permitted in the Navier–Stokes application. The displayed iterate estimates use compact-time Sobolev seminorms.</td><td>The checked statements do not supply this W-centred critical-norm ball, certified third-iterate entry or its numerical rate. An integrable global envelope could also upgrade convergence to global L²; there is no general impossibility claim.</td></tr><tr><td><a href="https://arxiv.org/pdf/2205.12383">Ambrose–Lopes Filho–Nussenzveig Lopes, 2205.12383</a><br><small>Theorem 1; Lemma 1; Remark 1</small></td><td>Periodic small-origin data are handled by the usual mild-map contraction in a global Fourier–Wiener space. Its sufficient threshold contains a constant C not numerically evaluated in the displayed statement.</td><td>Ordinary heat seeding and global convergence alone are established ideas. The implication to L²ₜA₀ below is our deduction. No numerical improvement over its unspecified threshold is asserted.</td></tr><tr><td><a href="https://arxiv.org/pdf/1104.3832">Morosi–Pizzocchero, 1104.3832</a><br><small>Proposition 4.5</small></td><td>A scalar control inequality bounds a strong solution against a regular approximate path in Hⁿ, with n&gt;d/2+1.</td><td>This is prior error-control machinery. The A₋₁ perturbation size alone does not uniformly bound the high-Sobolev initial discrepancy required by that application. It could still be analysed separately for individual data.</td></tr><tr><td><a href="https://arxiv.org/pdf/1203.2699">Lei–Lin, 1203.2699</a><br><small>Theorem 1.1</small></td><td>Global small-data theory uses a critical Fourier-integral norm on ℝ³.</td><td>A periodic W-centred numerical threshold cannot be read directly from that different domain and normalization. Critical Fourier smallness is not a new general principle here.</td></tr><tr><td><a href="https://arxiv.org/pdf/1312.2136">Benameur, 1312.2136</a><br><small>Theorem 1.4</small></td><td>Critical-Fourier stability around an already global ℝ³ solution is established, with an exponential threshold depending on the reference solution’s time-integrated Fourier norm.</td><td>Global-solution perturbation stability is prior work. The manuscript supplies a particular periodic reference, explicit bounds, and a prescribed-iteration conclusion.</td></tr><tr><td><a href="https://arxiv.org/html/2609.16157v1">Silva, 2609.16157v1</a><br><small>Section 2.1, equation (8), Theorem 2.2; Appendices F/K.7</small></td><td>The explicit cyclic class is aU+h, 0≤a≤0.7, A₂(h)≤0.01, with U=(sin y,sin z,sin x), in the same periodic setting. It gives global smoothness. Small-parameter contraction also appears elsewhere in the paper.</td><td>The set comparison below concerns this cyclic regularity class only. It does not subsume the separate ABC/TG3 families or compare their other estimates.</td></tr></table></div>
+<p><strong>Derived comparison, not a quotation:</strong> for the global Fourier–Wiener space Y used by Ambrose and coauthors, A₀(f)²≤A₋₁(f)A₁(f) implies ‖f‖<sub>L²ₜA₀</sub>≤√(‖f‖<sub>𝓧⁻¹</sub>‖f‖<sub>𝓧¹</sub>)≤‖f‖<sub>Y</sub>/2. Thus global L²ₜA₀ convergence is not new in isolation. The identified contribution is the particular certified W-centred family, actual-entry condition and uniform numerical bounds together.</p>
+<h2>4. An exact example beyond the named elementary test</h2>
+<p>Take h=(1/5000)sin(2y)eₓ and u₀=W+h. This h is smooth, real, mean-zero and divergence-free. The two nonzero coefficients each have magnitude 1/10000 at wave numbers ±(0,2,0). Hence A₋₁(h)=1/10000 exactly and A₋₁(u₀)=3.0001. It satisfies the main theorem’s stated radius.</p>
+<p>The complete heat seed satisfies A₀(eᵗΔu₀)=3e⁻ᵗ+(1/5000)e⁻⁴ᵗ, so its X-norm squared is exactly 4.500240005. Using the manuscript’s elementary bilinear constant c=1/(2√2), the origin-centred Banach sufficient test has</p>
+<div class="formula">(4c‖eᵗΔu₀‖<sub>X</sub>)² = 9.00048001 &gt; 1.</div>
+<p>Therefore <strong>that specific global origin-centred norm estimate cannot certify this example</strong>, while the stated W-centred theorem does cover it. This does not establish divergence of the iteration or failure of every prior method. It also avoids comparing an ℝ³ Fourier-integral threshold to periodic Fourier coefficients.</p>
+<p>For h<sub>m</sub>=(m/10000)sin(my)eₓ, integer m≥2, one has A₋₁(h<sub>m</sub>)=10⁻⁴ for every m, but A₂(h<sub>m</sub>)=m³/10000 and ‖h<sub>m</sub>‖<sub>Ḣˢ</sub>=m<sup>s+1</sup>/(10000√2). This is a uniform smooth family with no uniform higher-Sobolev bound when s&gt;−1. These deductions expose the role of the chosen topology; they do not create new hypotheses.</p>
+<h2>5. Strict enlargement of one stated regularity class</h2>
+<p>Let P interchange x and y and Tf(x)=P f(Pᵀx). Then TU=W and T preserves the equation and every A<sub>s</sub> norm. Since |k|≥1 on nonzero integer modes, A₋₁(Th)≤A₂(h). Keeping the same smooth, real, mean-zero and divergence-free perturbation conditions, the earlier cyclic class therefore maps into the manuscript’s Theorem 3.1 region C(8/7,1/100).</p>
+<div class="formula">T{aU+h: 0≤a≤7/10, A₂(h)≤1/100}<br>⊊ {aW+h: |a|≤8/7, A₋₁(h)≤1/100}.</div>
+<p>Strictness is independently checked in two ways. W lies in the latter set but its minimum A₂ distance from bW, 0≤b≤0.7, is 0.9, exceeding 0.01. At the same amplitude 0.7, take h=0.01sin(2y)eₓ: A₋₁(h)=0.005, whereas A₂(h)=0.04. Its separate Fourier support prevents another amplitude decomposition from removing that discrepancy.</p>
+<p><strong>This is a comparison for global PDE regularity.</strong> The main ordinary-Picard theorem is not extended to that larger class. No comparison is made between different action quantities, constants or cutoff geometries. The strict containment concerns the published explicit sets, not the maximum possible reach of either general method.</p>
+<h2>6. A usable consequence of the stated convergence rate</h2>
+<p>The geometric upper bound gives the following stopping indices. These are exact deductions from the theorem, not measured iteration errors, runtime results or finite-time L² velocity errors.</p>
+<table><tr><th>Target error in X=L²((0,∞);A₀)</th><th>Least n guaranteed by the displayed bound</th></tr><tr><td>1/100</td><td>64</td></tr><tr><td>1/1000</td><td>86</td></tr><tr><td>1/1000000</td><td>152</td></tr></table>
+<p>The earlier external-solver experiment used a different finite-time normalized L² energy estimate. It does not establish this main theorem or its novelty. These two pieces of work must retain separate claims and attribution.</p>
+<h2>7. Decision and remaining limits</h2>
+<p><strong>Supported framing:</strong> a specified, quantitatively certified extension within established Navier–Stokes analysis. The relevant evidence is the complete tuple of datum family, perturbation norm, prescribed iteration, actual-entry certificate, global norm and explicit constants. The strict inclusion above provides a particularly clear comparison for the separate regularity result.</p>
+<p><strong>Not decided:</strong> exhaustive historical novelty, independent development or priority, full proof correctness, optimal constants, acceptance, financial value or legal entitlement. The checked results do not directly provide the whole stated tuple, but absence from this targeted comparison is not proof of world-first priority. Source attribution and AI-assistance disclosure remain appropriate.</p>
+<p>The concrete next use of this result is a precise contribution statement, supported by the comparison and explicit witnesses, when discussing or documenting the manuscript. This audit supplies that statement. No additional numerical solver benchmark is needed to establish the elementary set inclusion.</p>
+<details><summary>Reproduce the elementary rational checks</summary><pre>from fractions import Fraction as F
+delta=F(1,5000); m=2
+assert delta/m == F(1,10000)
+heat_squared=F(9,2)+6*delta/F(1+m*m)+delta**2/F(2*m*m)
+assert 2*heat_squared == F(900048001,100000000) &gt; 1
+assert 3*(1-F(7,10)) == F(9,10) &gt; F(1,100)
+assert F(1,100)/2 == F(1,200) &lt;= F(1,100)
+assert F(1,100)*2**2 == F(1,25) &gt; F(1,100)
+for goal,answer in [(F(1,100),64),(F(1,1000),86),(F(1,10**6),152)]:
+    n=3
+    while 6*F(9,10)**(n-3)&gt;goal:
+        n+=1
+    assert n==answer
+print(&quot;Exact arithmetic checks passed.&quot;)</pre><p>This code uses only Python’s standard library. It does not execute an original archived certificate program and does not re-prove the main theorem.</p></details>
+<details><summary>Exact checked quantities and manuscript identity</summary><pre>{
+  &quot;scope&quot;: &quot;Exact elementary deductions from stated theorem hypotheses; not a rerun or a new proof of the manuscript theorem.&quot;,
+  &quot;manuscript_sha256&quot;: &quot;74af3faa5cb535ff641bca0f6cb0db1ca4df9f11b90353a57b48bf1e9174009b&quot;,
+  &quot;main_example&quot;: {
+    &quot;h&quot;: &quot;(1/5000) sin(2y) e_x&quot;,
+    &quot;A_minus1_h&quot;: &quot;1/10000&quot;,
+    &quot;A2_h&quot;: &quot;1/1250&quot;,
+    &quot;A_minus1_u0&quot;: &quot;30001/10000&quot;,
+    &quot;heat_seed_X_squared&quot;: &quot;900048001/200000000&quot;,
+    &quot;elementary_zero_center_contraction_factor_squared&quot;: &quot;900048001/100000000&quot;,
+    &quot;E0&quot;: &quot;75000001/50000000&quot;,
+    &quot;X0&quot;: &quot;18750001/12500000&quot;,
+    &quot;E0_X0_over2&quot;: &quot;1406250093750001/1250000000000000&quot;
+  },
+  &quot;rate_deductions&quot;: [
+    {
+      &quot;X_error_target&quot;: &quot;1/100&quot;,
+      &quot;least_iteration_from_stated_bound&quot;: 64,
+      &quot;bound_exact&quot;: &quot;48519278097689642681155855396759336072749841943521979872827/5000000000000000000000000000000000000000000000000000000000000&quot;
+    },
+    {
+      &quot;X_error_target&quot;: &quot;1/1000&quot;,
+      &quot;least_iteration_from_stated_bound&quot;: 86,
+      &quot;bound_exact&quot;: &quot;47780373265559358009192445772039644256794138579444188363337645975725833060824587/50000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;
+    },
+    {
+      &quot;X_error_target&quot;: &quot;1/1000000&quot;,
+      &quot;least_iteration_from_stated_bound&quot;: 152,
+      &quot;bound_exact&quot;: &quot;45630493019529458663775342460696105322154565208445812157160063359456332392499692197933402051896313796083494813532664680937837577588565258188667/50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;
+    }
+  ],
+  &quot;coordinate_change&quot;: &quot;P swaps x and y, (Tf)(x)=P f(P^T x); checked T U=W&quot;,
+  &quot;strict_class_witnesses&quot;: {
+    &quot;amplitude&quot;: {
+      &quot;u0&quot;: &quot;W&quot;,
+      &quot;min_A2_distance_from_prior_segment&quot;: &quot;9/10&quot;,
+      &quot;prior_radius&quot;: &quot;1/100&quot;
+    },
+    &quot;same_amplitude_perturbation&quot;: {
+      &quot;u0&quot;: &quot;(7/10)W+(1/100)sin(2y)e_x&quot;,
+      &quot;A_minus1_h&quot;: &quot;1/200&quot;,
+      &quot;min_A2_distance_from_prior_segment&quot;: &quot;1/25&quot;,
+      &quot;prior_radius&quot;: &quot;1/100&quot;
+    }
+  },
+  &quot;high_frequency_family&quot;: {
+    &quot;h_m&quot;: &quot;(m/10000)sin(my)e_x, integer m&gt;=2&quot;,
+    &quot;A_minus1&quot;: &quot;1/10000&quot;,
+    &quot;A2&quot;: &quot;m^3/10000&quot;,
+    &quot;Hdot_s&quot;: &quot;m^(s+1)/(10000*sqrt(2))&quot;
+  },
+  &quot;checks_passed&quot;: true
+}</pre></details>
+<footer>Prepared for Rushikesh Murlidhar Walke with AI assistance. Primary sources checked on 19 October 2026. Project Aparichit is excluded. No journal submission, public release, message, fee or patent filing was performed.</footer>
+</main></html>

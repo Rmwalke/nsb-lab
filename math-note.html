@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite-time L2 residual argument</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#142d36;background:#f4faf8;max-width:920px;margin:auto;padding:28px}a{color:#096750}h1{line-height:1.2}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:18px;border-radius:12px;font:14px/1.6 ui-monospace,monospace}table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #c8d9d5;text-align:left}.note{padding:18px;background:#e1f2eb;border-radius:12px}code{overflow-wrap:anywhere}</style><p><a href="solver.html">← Flow solver</a> · <a href="solver-kit.zip">Download source and derivation</a></p><h1>Finite-time L² residual argument</h1><p>Full derivation and assumptions. The source kit contains this note as Markdown.</p><pre># Finite-time L2 residual bound for the NS-B prototype
+
+This is an independent standard energy-estimate implementation, not a verification of the manuscript&#x27;s global X-norm Picard theorem or its supplementary N3 H1 certificate. It does not establish novelty, strong regularity, uniqueness, or an industrial advantage.
+
+## Setting and statement
+
+Use the unforced incompressible Navier–Stokes equation on the 2π-periodic three-torus, with viscosity ν=1 and normalized spatial measure (2π)^−3 dx. Let u be any Leray–Hopf energy-admissible weak solution with the specified real divergence-free mean-zero initial datum u0. Let v(t,x) be a real, exactly divergence-free, mean-zero finite Fourier field, continuous and piecewise affine in time. Its time derivative can jump at knots; v itself must not jump.
+
+Define the full projected PDE residual
+
+    r = ∂t v − Δv + P[(v·∇)v].
+
+If L(t) bounds the pointwise spatial operator norm of ∇v, and R(t) bounds normalized ||r(t)||2, the relative-energy inequality gives
+
+    1/2 d/dt ||u−v||2² + ||∇(u−v)||2²
+        ≤ L(t)||u−v||2² + R(t)||u−v||2.
+
+For smooth solutions this follows by cancellation of the transport and self-advection terms, leaving −&lt;((u−v)·∇)v,u−v&gt;−&lt;r,u−v&gt;. For Leray–Hopf solutions use v as a test field in the weak formulation and combine with the energy inequality; time smoothing handles the finitely many derivative jumps. Regularization of sqrt(||u−v||2²+ε²) handles vanishing error. The scalar comparison solution z&#x27;=Lz+R, z(0)≥||u0−v(0)||2, consequently bounds ||u(t)−v(t)||2. Use the global piecewise coefficient comparison; do not assume arbitrary time knots are energy-equality times of u. Weak continuity and lower semicontinuity extend the estimate to the usual all-time representative.
+
+This bounds every such weak solution. A small L2 tube by itself does not show that the solution is unique or smooth.
+
+## Exact Fourier formulas
+
+Represent each complex coefficient by two rational numbers. Include the complete symmetric set of ±k modes. Check k·a_k=0, a_−k=conj(a_k), and a_0=0 exactly. Parseval is ||v||2²=Σ_k Σ_j[(Re a_k,j)²+(Im a_k,j)²]. For W=(sin z,sin x,sin y), the six nonzero coefficients are exactly ±i/2 in the corresponding components, and ||W||2²=3/2.
+
+On a step h&gt;0, set s=(t−t_n)/h, A_k=a_k(t_n), D_k=a_k(t_n+h)−A_k, a_k(s)=A_k+sD_k. For k≠0, P_k=I−kkᵀ/|k|². Define Q(a,b)_k=iP_k Σ_{p+q=k}(q·a_p)b_q. All the sums are exact rational complex sums. In particular, retain outputs beyond the solver&#x27;s cutoff; their residual is the spatial truncation defect. For the zero mode verify the exact nonlinear contribution vanishes (or include it directly).
+
+Then r(s)=c0+s c1+s² c2, with
+
+    c0_k = D_k/h + |k|² A_k + Q(A,A)_k
+    c1_k = |k|² D_k + Q(D,A)_k + Q(A,D)_k
+    c2_k = Q(D,D)_k.
+
+At output modes absent from A and D, the linear terms are zero. The full support needed is S union (S+S), not merely S. Avoid aliasing/FFT wraparound in certification.
+
+Use the quadratic Bernstein vectors
+
+    B0=c0, B1=c0+c1/2, B2=c0+c1+c2.
+
+Because r(s)=(1−s)²B0+2s(1−s)B1+s²B2, convexity of the L2 norm proves the whole-step bound
+
+    R = max_j upper_sqrt(Σ_k |Bj,k|²).
+
+This is a uniform bound in time, not a sampled maximum. If it is too loose, subdivide the same polynomial exactly into smaller time intervals and apply the same bound.
+
+A safe whole-step Lipschitz bound is
+
+    L = max_{a=A,A+D} Σ_k upper_sqrt(|k|² |a_k|²).
+
+The endpoint maximum is valid by convexity in a(s), Fourier triangle inequality, and ||a⊗k||op=|a||k|. Using the Frobenius norm is also safe. Numerical pointwise maxima on a spatial grid are not certificates.
+
+For a tighter bound, only the symmetric strain S=(∇v+∇vᵀ)/2 enters eᵀ∇v e. Its complex Fourier matrix has squared Hermitian Frobenius norm (|k|²|a_k|²+|k·a_k|²)/2. Since the coefficients are exactly divergence free, one may therefore replace the square root above by upper_sqrt(|k|²|a_k|²/2). This remains a bound on the real pointwise strain operator norm by the Fourier triangle inequality. The implemented verifier may use this tighter form.
+
+## Exact outward arithmetic
+
+For nonnegative rational q and integer denominator D&gt;0, choose integer m=ceil(sqrt(ceil(qD²))) by integer square root plus a correction if needed. Then m/D≥sqrt(q). All arithmetic inside these expressions must be rational/integer; floating sqrt followed by printing decimals is not a certificate.
+
+If hL&lt;1, a simple rational step is
+
+    z_next = upward_round_D((z_current+hR)/(1−hL)).
+
+It bounds the exact scalar propagation because exp(x)≤1/(1−x) for 0≤x&lt;1. This first-order overestimate is usually acceptable for small h. If hL≥1, subdivide the certification step or use the following exponential upper bound.
+
+For x=hL≥0 choose m with x&lt;m+2 and set
+
+    qexp = Σ_{j=0}^m x^j/j! + [x^(m+1)/(m+1)!]/[1−x/(m+2)].
+
+The geometric-tail argument proves qexp≥exp(x). If L&gt;0,
+
+    z_next = upward_round_D(qexp*z_current + (qexp−1)*R/L).
+
+For L=0 use upward_round_D(z_current+hR). A constant nonnegative L,R comparison is monotone in time, so the certified right-endpoint bound also bounds the entire step. For a smaller-time display compute the corresponding partial-step scalar bound.
+
+The implemented certify.py uses the slightly more conservative uniformly valid formula z_next=upward_round_D(qexp*(z_current+hR)). This follows from the exact variation-of-constants formula because exp(L(h−s))≤exp(Lh) throughout the step. It also handles L=0 directly, since the rational exponential routine returns exactly 1 at zero.
+
+The approximate floating-point solver is free to use RK4 etc. The certificate applies to the exact rational projected, conjugate-symmetric endpoint trajectory reconstructed afterward. It includes the resulting time-discretization, omitted nonlinear modes, quantization, and solver roundoff effects through its full residual and initial error. It does not certify the original unrounded floating trajectory, except after adding a separately bounded reconstruction difference.
+
+## Product/report wording
+
+Use “finite-time normalized L2 residual-based upper bound” with the exact initial datum, viscosity, time horizon, cutoff, endpoint reconstruction rule, residual support, arithmetic denominator, and method version in the report. Explain that normalized L2 is a spatial root-mean-square vector velocity error, not an everywhere pointwise bound or an error percentage unless a separately justified denominator is specified.
+
+Compare a coarse and refined solver by their independent certified bounds; do not label their mutual difference as ground-truth error. A successful bound shows quantitative consistency with the PDE on a finite interval. It does not demonstrate that this manuscript&#x27;s new theorem is necessary for, or superior to existing, numerical validation methods.
+
+The manuscript section 04_n3.tex uses a distinct H1 nonlinear scalar comparison and an infinite-time certificate for exact Galerkin trajectories. Do not import that conclusion into this L2 prototype without validating its separate assumptions and interval computations.
+
+## Primary-source background (not an exact citation for the formulas above)
+
+- Sandrine Dubois, “Uniqueness for some Leray–Hopf solutions to the Navier–Stokes equations”, Journal of Differential Equations 189 (2003), 99–147, DOI 10.1016/S0022-0396(02)00108-0: energy inequalities and weak–strong comparison framework.
+- Morosi and Pizzocchero, “On approximate solutions of the incompressible Euler and Navier-Stokes equations”, arXiv:1104.3832 / Nonlinear Analysis 75 (2012), 2209–2235: existing quantitative a posteriori estimates on a torus. Their stronger Sobolev framework differs from this elementary L2 comparison.
+
+The formulas in this note are derived directly above. They are not a formal theorem-prover proof or an external independent human review.
+</pre><p>Primary-source background: <a href="https://arxiv.org/abs/1104.3832">Morosi and Pizzocchero, arXiv:1104.3832</a>.</p></html>

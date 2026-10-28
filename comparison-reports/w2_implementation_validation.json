@@ -1,0 +1,33 @@
+{
+  "status": "PASS_IMPLEMENTATION_CHECKS_NOT_PROOF_OF_PAPER",
+  "exact_spatial_checks": [
+    "F=B(W,W)",
+    "B(W,F)+B(F,W)=-W/2+C",
+    "all_bases_divergence_free",
+    "all_bases_conjugate_real"
+  ],
+  "stored_modes": 122,
+  "active_w2_modes": 54,
+  "max_active_k_squared": 6,
+  "max_divergence_coefficient": 0.0,
+  "max_reality_defect": 0.0,
+  "max_A0_formula_absolute_error": 8.881784197001252e-16,
+  "max_heat_profile_relative_error_vs_90digit_decimal": 3.4464691552599426e-15,
+  "max_trig_evaluation_error": 1.1188630228279524e-16,
+  "invalid_input_rejections": 5,
+  "test_times": [
+    0.0,
+    1e-12,
+    1e-08,
+    0.001,
+    0.01,
+    0.0625,
+    0.125,
+    0.25,
+    0.25001,
+    0.5,
+    1.0,
+    4.0,
+    20.0
+  ]
+}

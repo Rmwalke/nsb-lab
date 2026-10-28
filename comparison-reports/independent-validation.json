@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "rhs_checks": [
+    {
+      "cutoff": 2,
+      "field": "W",
+      "literal_rhs_max_abs_difference": 0.0,
+      "original_rhs_max_abs_difference": 0.0,
+      "original_vs_literal_max_abs_difference": 0.0
+    },
+    {
+      "cutoff": 2,
+      "field": "shear",
+      "literal_rhs_max_abs_difference": 0.0,
+      "original_rhs_max_abs_difference": 0.0,
+      "original_vs_literal_max_abs_difference": 0.0
+    },
+    {
+      "cutoff": 2,
+      "field": "generic_odd_divergence_free",
+      "literal_rhs_max_abs_difference": 6.938893903907228e-18,
+      "original_rhs_max_abs_difference": 6.938893903907228e-18,
+      "original_vs_literal_max_abs_difference": 0.0
+    },
+    {
+      "cutoff": 3,
+      "field": "W",
+      "literal_rhs_max_abs_difference": 0.0,
+      "original_rhs_max_abs_difference": 0.0,
+      "original_vs_literal_max_abs_difference": 0.0
+    },
+    {
+      "cutoff": 3,
+      "field": "shear",
+      "literal_rhs_max_abs_difference": 0.0,
+      "original_rhs_max_abs_difference": 0.0,
+      "original_vs_literal_max_abs_difference": 0.0
+    },
+    {
+      "cutoff": 3,
+      "field": "generic_odd_divergence_free",
+      "literal_rhs_max_abs_difference": 5.551115123125783e-17,
+      "original_rhs_max_abs_difference": 5.551115123125783e-17,
+      "original_vs_literal_max_abs_difference": 3.469446951953614e-18
+    }
+  ],
+  "trajectory_checks": [
+    {
+      "kind": "W",
+      "cutoff": 3,
+      "step_denominator": 128,
+      "time": 0.25,
+      "all_endpoints_max_abs_difference": 6.938893903907228e-18,
+      "exact_rational_reconstruction_identical": true
+    },
+    {
+      "kind": "shear",
+      "cutoff": 3,
+      "step_denominator": 128,
+      "time": 0.25,
+      "all_endpoints_max_abs_difference": 0.0,
+      "exact_rational_reconstruction_identical": true,
+      "analytic_shear_max_abs_difference": 3.042011087472929e-12
+    }
+  ],
+  "certificate_scope": "Only trajectory generation is optimized. Unmodified ExactResidual constructs all input-pair sums and measures every exterior residual mode.",
+  "source_sha256": {
+    "solver.py": "1577802a90d39e6a2d9656a4e2c89e9e1624e0dc47f4f437deedc560ce775852",
+    "certify.py": "96adbd6f17370e9dcad995dc711b1876f540f47e9346f4c02131365de5de9732",
+    "optimized_solver.py": "a35760ff78e5485882517af88ae9856bbe6256934d9b2899cb4575d6fe8c26b1",
+    "independent_check.py": "c496fb2e78152e9422e14862bf9f7fd86100682ac9bfa60e20953349719ac0bb"
+  }
+}

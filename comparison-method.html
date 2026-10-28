@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W₂ / RK4 comparison protocol</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#142e38;background:#f3f8f5;max-width:960px;margin:auto;padding:24px}a{color:#087968}h1{line-height:1.15}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 ui-monospace,monospace;background:white;padding:20px;border-radius:12px}code{overflow-wrap:anywhere}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #c9dcd3}.note{background:#dfefe5;border-radius:12px;padding:18px}</style><p><a href="comparison.html">← तुलना / Comparison</a> · <a href="comparison-kit.zip">Download complete experiment</a></p><h1>समान अटींवरील तुलना<br>Comparison protocol</h1><p class="note">एकच प्रमाणित त्रुटी-लक्ष्य ०.००५ घेतल्यावर, पेपरमधील w₂ (Δt=1/256) साठी तयारी, गणना व प्रमाणपत्र मिळून मध्यम वेळ 0.808 सेकंद आला; सुधारित RK4 (Δt=1/128) साठी 0.989 सेकंद. या चाचणीत सुमारे 18.4% कमी वेळ लागला. तिन्ही पद्धतींच्या सहा पूर्ण चाचण्या एकाच सत्रात केल्या. वेळांच्या किमान–कमाल पट्ट्यांत काही आच्छादन आहे. समान वेळेच्या पावलावर RK4ची सीमा अधिक घट्ट होती. हा या मर्यादित प्रयोगातील मध्यम वेळेचा निकाल आहे; सर्वत्र वेगाचा फायदा मिळेल अशी हमी नाही.</p><pre># What was tested
+
+The manuscript explicitly gives w2=(exp(-t)-L1/2)W-t exp(-2t)F+L5 C-L6 H.
+The implementation builds W,F,C,H with exact rational Fourier algebra, then
+evaluates ordinary floating-point exponentials at the requested sample times.
+The independent review uses literal complex Fourier convolution and 32/64-point
+Gauss-Legendre Duhamel quadrature, agreeing to 5.56e-17 in the tested coefficients.
+This is a numerical consistency test, not independent external peer review.
+
+Four methods were tested: the heat reference w0, paper formulas w1 and w2, and
+the optimized real-odd interior-pair Fourier RK4 implementation. The common endpoint grids have
+steps 1/64, 1/128, 1/256; each covers W, viscosity 1, and 0 &lt;= t &lt;= 1/4.
+All use the same 122-mode N=3 storage. w2 has only 54 active modes, all |k|²&lt;=6.
+No active w2 mode is cut off. The certificate retains the complete 829-mode
+residual support including zero; it does not drop residual modes beyond N=3.
+
+The unchanged exact-rational residual checker projects and quantizes each
+endpoint and linearly interpolates in time. Whole-step Bernstein residual
+bounds, symmetric-gradient bounds, and rational upward arithmetic yield a
+normalized spatial L2 tube around this reconstructed field. The method and
+assumptions are in finite_time_l2_bound.md and CERTIFICATE_README.md in the ZIP.
+
+What is comparable: both methods are certified against the same PDE, initial
+data, norm, time horizon, checker, and arithmetic precision. On the 12-case
+grid, identical time steps permit a direct resolution comparison.
+
+The follow-up fixes target 0.005 and selects the fastest eligible measured case
+for each of w2 and RK4 using generation+certificate medians. This selects
+w2 with step 1/256 and optimized RK4 with step 1/128. Original RK4 is also
+regenerated at step 1/128 as a control. Six cold end-to-end trials per method
+use a balanced cyclic order, with each method in each position twice. They include method setup, endpoint generation, compressed NPZ
+write, certificate read, exact calculation, and report/reconstruction writes.
+Interpreter startup and imports are excluded. The selection is within this
+finite grid, not a globally optimal algorithm choice.
+
+Warm generation uses nine trials after warmup, with rotated method order;
+certificate uses three trials; setup uses seven. All individual times and
+environment versions are retained. Shared-server load and implementation
+choices affect timings. The optimized Python RK4 evolves real odd coefficients
+using only the 6,642 retained-destination ordered pairs, versus the original
+14,884 full pairs. Independent literal convolution and trajectory checks
+passed, and the W trajectory has the same exact rational reconstruction at
+step 1/128 as the original. The separate residual certificate still includes
+all 829 possible output modes. This baseline is not an industrial CFD package. Paper basis
+setup includes exact algebra checks and can be reused for w0,w1,w2.
+
+At each identical grid spacing, RK4 gives a tighter certificate than w2.
+w2 meets the common 0.005 target at a denser sampling grid and takes less total
+median measured time in this run. Timing ranges overlap, so the result is
+not a deterministic speed guarantee. This supports a narrowly scoped use as
+a quickly evaluated reference for a certified approximation. It does not prove
+that w2&#x27;s true PDE error is smaller, nor that the global theorem is required
+for this speed benefit. The approximation w2 itself stays fixed when samples
+are refined; its reconstruction and residual enclosure improve.
+
+Source manuscript: Global heat-seeded Picard convergence near a nonlinear
+periodic Navier-Stokes flow, Rushikesh Murlidhar Walke.
+https://doi.org/10.5281/zenodo.23429477
+https://github.com/Rmwalke/nsb-open-certificate-check
+
+Prepared with AI assistance. All claims here are limited to the specified
+test and measured implementations. Mathematical/code independent review
+remains welcome. No full-paper proof, novelty or industrial superiority claim.
+</pre></html>

@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "rhs_comparisons": [
+    {
+      "cutoff": 2,
+      "trial": 0,
+      "maximum_coefficient_difference": 0.0,
+      "energy_identity_absolute_residual": 0.0
+    },
+    {
+      "cutoff": 2,
+      "trial": 1,
+      "maximum_coefficient_difference": 1.734723475976807e-18,
+      "energy_identity_absolute_residual": 0.0
+    },
+    {
+      "cutoff": 2,
+      "trial": 2,
+      "maximum_coefficient_difference": 6.938893903907228e-18,
+      "energy_identity_absolute_residual": 1.1102230246251565e-16
+    },
+    {
+      "cutoff": 3,
+      "trial": 0,
+      "maximum_coefficient_difference": 5.551115123125783e-17,
+      "energy_identity_absolute_residual": 2.220446049250313e-16
+    },
+    {
+      "cutoff": 3,
+      "trial": 1,
+      "maximum_coefficient_difference": 2.7755575615628914e-17,
+      "energy_identity_absolute_residual": 2.220446049250313e-16
+    },
+    {
+      "cutoff": 3,
+      "trial": 2,
+      "maximum_coefficient_difference": 2.7755575615628914e-17,
+      "energy_identity_absolute_residual": 0.0
+    }
+  ],
+  "trajectory_comparisons": [
+    {
+      "cutoff": 2,
+      "step_denominator": 64,
+      "maximum_coefficient_difference_over_all_endpoints": 1.734723475976807e-18,
+      "maximum_divergence_coefficient": 3.7565544877229737e-19,
+      "maximum_reality_defect": 2.6878512657220347e-21
+    },
+    {
+      "cutoff": 2,
+      "step_denominator": 128,
+      "maximum_coefficient_difference_over_all_endpoints": 6.018531076210112e-36,
+      "maximum_divergence_coefficient": 6.051815088352101e-19,
+      "maximum_reality_defect": 4.839749910039468e-21
+    },
+    {
+      "cutoff": 2,
+      "step_denominator": 256,
+      "maximum_coefficient_difference_over_all_endpoints": 4.336808689942018e-19,
+      "maximum_divergence_coefficient": 5.571391623064469e-19,
+      "maximum_reality_defect": 5.922192228169568e-21
+    },
+    {
+      "cutoff": 3,
+      "step_denominator": 64,
+      "maximum_coefficient_difference_over_all_endpoints": 6.938893903907228e-18,
+      "maximum_divergence_coefficient": 5.655414207871444e-19,
+      "maximum_reality_defect": 6.938893903907228e-18
+    },
+    {
+      "cutoff": 3,
+      "step_denominator": 128,
+      "maximum_coefficient_difference_over_all_endpoints": 6.938893903907228e-18,
+      "maximum_divergence_coefficient": 5.925844984950792e-19,
+      "maximum_reality_defect": 6.938893903907228e-18
+    },
+    {
+      "cutoff": 3,
+      "step_denominator": 256,
+      "maximum_coefficient_difference_over_all_endpoints": 1.734723475976807e-18,
+      "maximum_divergence_coefficient": 5.049661053760564e-19,
+      "maximum_reality_defect": 6.938893903907228e-18
+    }
+  ],
+  "shear_convergence": {
+    "step_denominators": [
+      4,
+      8,
+      16
+    ],
+    "maximum_coefficient_errors": [
+      7.3791176531390335e-06,
+      4.1537525469204084e-07,
+      2.4640564311173563e-08
+    ],
+    "refinement_error_ratios": [
+      17.764942831295787,
+      16.8573758882496
+    ]
+  },
+  "scope": "numerical equivalence and structural checks, not PDE certification",
+  "invalid_time_inputs_rejected": 5,
+  "N3_mode_count": 122,
+  "N3_interior_ordered_pairs": 6642,
+  "N3_all_ordered_pairs": 14884
+}

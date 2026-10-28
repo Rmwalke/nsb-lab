@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paper formula w₂ · step 1/256</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#142e38;background:#f3f8f5;max-width:960px;margin:auto;padding:24px}a{color:#087968}h1{line-height:1.15}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 ui-monospace,monospace;background:white;padding:20px;border-radius:12px}code{overflow-wrap:anywhere}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #c9dcd3}.note{background:#dfefe5;border-radius:12px;padding:18px}</style>
+      <p><a href="../comparison.html">← W₂ / RK4 comparison</a> · <a href="../comparison-method.html">Protocol and limitations</a></p>
+      <h1>Paper formula w₂ · Δt = 1/256</h1>
+      <p class="note">Normalized spatial L² velocity-error upper bound ≤ <strong>0.003533</strong> through 0 ≤ t ≤ 1/4, for the exact rational piecewise-linear reconstruction. Exact fraction: <code>1018262831320207/288230376151711744</code>.</p>
+      <p>Same initial W = (sin z, sin x, sin y), viscosity 1, unforced periodic three-dimensional torus. Stored modes: 122; nonzero endpoint modes: 54; full residual support: 829 (including zero). Initial error is exactly zero.</p>
+      <table><tr><th>Setup (shared paper bases or RK4 geometry)</th><td>5.419 ms median</td></tr><tr><th>Warm endpoint generation</th><td>0.479 ms median</td></tr><tr><th>Full certificate including report writes</th><td>784.904 ms median</td></tr></table>
+      <p>Generation: median of nine warmed trials. Certificate: median of three trials. Setup: median of seven trials. Setup is separate and reusable. These are measurements of these Python implementations on one shared server.</p>
+      <p><a href="certificate_w2_dt256.json">Exact certificate JSON</a> · <a href="certificate_w2_dt256.reconstruction.json">Rational reconstruction</a> · <a href="../comparison-kit.zip">All code, inputs, timings and validation ZIP</a></p>
+      <p>The certificate bounds the reconstructed reference's distance to any Leray–Hopf energy-admissible weak solution in the stated setting. It uses the standard relative-energy argument and does not certify the continuous exponential reference directly, the global Picard theorem, novelty, or general industrial superiority.</p>
+      <h2>Raw timing samples and provenance</h2><pre>{
+  &quot;setup&quot;: {
+    &quot;medianSeconds&quot;: 0.005418747001385782,
+    &quot;minSeconds&quot;: 0.005338936000043759,
+    &quot;maxSeconds&quot;: 0.005462973000248894,
+    &quot;samplesSeconds&quot;: [
+      0.005462973000248894,
+      0.005408029999671271,
+      0.005418747001385782,
+      0.00543783600005554,
+      0.005444955999337253,
+      0.005338936000043759,
+      0.00534672799949476
+    ]
+  },
+  &quot;generation&quot;: {
+    &quot;medianSeconds&quot;: 0.00047915199866110925,
+    &quot;minSeconds&quot;: 0.00042225600009260233,
+    &quot;maxSeconds&quot;: 0.0026483169986022403,
+    &quot;samplesSeconds&quot;: [
+      0.0004461429998627864,
+      0.0004820969988941215,
+      0.00046382999971683603,
+      0.0005405350002547493,
+      0.0026483169986022403,
+      0.00045758000123896636,
+      0.0005032090011809487,
+      0.00047915199866110925,
+      0.00042225600009260233
+    ]
+  },
+  &quot;certificate&quot;: {
+    &quot;medianSeconds&quot;: 0.7849044140002661,
+    &quot;minSeconds&quot;: 0.7780518729996402,
+    &quot;maxSeconds&quot;: 0.7875735350007744,
+    &quot;samplesSeconds&quot;: [
+      0.7849044140002661,
+      0.7875735350007744,
+      0.7780518729996402
+    ]
+  },
+  &quot;source_npz_sha256&quot;: &quot;241aa890ecdab5aaa351880809c84dd2ec4831144f770bb599edac415b3e69d0&quot;,
+  &quot;checker_sha256&quot;: &quot;96adbd6f17370e9dcad995dc711b1876f540f47e9346f4c02131365de5de9732&quot;,
+  &quot;reconstruction_canonical_sha256&quot;: &quot;1b5d28cd69448a58af62baec50a03a1bcb51d39c8f85fac061a4cf1ee598fba1&quot;
+}</pre></html>

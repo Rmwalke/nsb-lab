@@ -1,0 +1,245 @@
+{
+  "targetFraction": "1/200",
+  "target": 0.005,
+  "trials": 6,
+  "selection": "From the fresh 12-case optimized-baseline grid, choose the lowest generation+certificate median per w2/optimized-RK4 method with exact bound <=1/200. Also rerun original RK4 at the same RK4 resolution as a control. This is a finite-grid selection, not global optimization.",
+  "measurement": "Six new cold full-pipeline trials per method in balanced cyclic order, all in one Python process: method setup, endpoint generation, compressed input write, full residual certificate read/reconstruction/calculation/report writes. Interpreter/import startup excluded.",
+  "cases": [
+    {
+      "id": "w2_dt256",
+      "method": "w2",
+      "stepDenominator": 256,
+      "label": "Paper formula w2",
+      "finalBound": 0.0035328088764115494,
+      "finalBoundFraction": "1018262831320207/288230376151711744",
+      "finalBoundOutward": "0.003533",
+      "endToEnd": {
+        "medianSeconds": 0.8076910875006433,
+        "minSeconds": 0.7490966530003789,
+        "maxSeconds": 0.9485938439993333,
+        "samplesSeconds": [
+          0.7490966530003789,
+          0.9485938439993333,
+          0.8009553170013533,
+          0.9285450239985948,
+          0.8144268579999334,
+          0.7898964700016222
+        ]
+      },
+      "stages": {
+        "setup": {
+          "medianSeconds": 0.004460053500224603,
+          "minSeconds": 0.00397259000055783,
+          "maxSeconds": 0.005764249999629101,
+          "samplesSeconds": [
+            0.005764249999629101,
+            0.004074843998751021,
+            0.00397259000055783,
+            0.004804162999789696,
+            0.004906326999844168,
+            0.0041159440006595105
+          ]
+        },
+        "generation": {
+          "medianSeconds": 0.0005536595008379663,
+          "minSeconds": 0.0005078750000393484,
+          "maxSeconds": 0.0013403709999693092,
+          "samplesSeconds": [
+            0.0013403709999693092,
+            0.0005831590005982434,
+            0.0005241600010776892,
+            0.0005192429998714942,
+            0.0007664760014449712,
+            0.0005078750000393484
+          ]
+        },
+        "serialization": {
+          "medianSeconds": 0.002575286999672244,
+          "minSeconds": 0.002480870998624596,
+          "maxSeconds": 0.006770097001208342,
+          "samplesSeconds": [
+            0.006770097001208342,
+            0.0025343599991174415,
+            0.002480870998624596,
+            0.002651478000188945,
+            0.0025748319985723356,
+            0.002575742000772152
+          ]
+        },
+        "certificate": {
+          "medianSeconds": 0.8000784595005825,
+          "minSeconds": 0.7352219349995721,
+          "maxSeconds": 0.9414014810008666,
+          "samplesSeconds": [
+            0.7352219349995721,
+            0.9414014810008666,
+            0.7939776960010931,
+            0.9205701399987447,
+            0.8061792230000719,
+            0.7826969090001512
+          ]
+        }
+      }
+    },
+    {
+      "id": "rk4_dt128",
+      "method": "rk4",
+      "stepDenominator": 128,
+      "label": "Optimized RK4",
+      "finalBound": 0.0035463291376414876,
+      "finalBoundFraction": "2044319562600363/576460752303423488",
+      "finalBoundOutward": "0.003547",
+      "endToEnd": {
+        "medianSeconds": 0.9894498804997056,
+        "minSeconds": 0.8900204639994627,
+        "maxSeconds": 1.1003198549988156,
+        "samplesSeconds": [
+          0.8900204639994627,
+          1.08240628600106,
+          1.0131170619988552,
+          0.965782699000556,
+          1.1003198549988156,
+          0.9536270839998906
+        ]
+      },
+      "stages": {
+        "setup": {
+          "medianSeconds": 0.001338727998700051,
+          "minSeconds": 0.0011004290008713724,
+          "maxSeconds": 0.004863769001531182,
+          "samplesSeconds": [
+            0.0012124879995099036,
+            0.004863769001531182,
+            0.0012394379991746973,
+            0.0011004290008713724,
+            0.0014380179982254049,
+            0.0016429159986728337
+          ]
+        },
+        "generation": {
+          "medianSeconds": 0.0363890504995652,
+          "minSeconds": 0.03219572899979539,
+          "maxSeconds": 0.040196662999733235,
+          "samplesSeconds": [
+            0.03219572899979539,
+            0.03253553099966666,
+            0.037253409000186366,
+            0.035524691998944036,
+            0.03968755900132237,
+            0.040196662999733235
+          ]
+        },
+        "serialization": {
+          "medianSeconds": 0.003899373999956879,
+          "minSeconds": 0.003785167000387446,
+          "maxSeconds": 0.0059454539987200405,
+          "samplesSeconds": [
+            0.003819418001512531,
+            0.0038562139998248313,
+            0.003785167000387446,
+            0.003942534000088926,
+            0.0059454539987200405,
+            0.005299767000906286
+          ]
+        },
+        "certificate": {
+          "medianSeconds": 0.9480270459998792,
+          "minSeconds": 0.8527928289986448,
+          "maxSeconds": 1.0532488240005478,
+          "samplesSeconds": [
+            0.8527928289986448,
+            1.0411507720000373,
+            0.9708390479991067,
+            0.9252150440006517,
+            1.0532488240005478,
+            0.9064877380005782
+          ]
+        }
+      }
+    },
+    {
+      "id": "rk4_original_dt128",
+      "method": "rk4_original",
+      "stepDenominator": 128,
+      "label": "Original RK4",
+      "finalBound": 0.0035463291376414876,
+      "finalBoundFraction": "2044319562600363/576460752303423488",
+      "finalBoundOutward": "0.003547",
+      "endToEnd": {
+        "medianSeconds": 1.2344232624991491,
+        "minSeconds": 1.077236916999027,
+        "maxSeconds": 1.349262384001122,
+        "samplesSeconds": [
+          1.077236916999027,
+          1.3187654289995407,
+          1.349262384001122,
+          1.3152868199995282,
+          1.1306249600002047,
+          1.15355970499877
+        ]
+      },
+      "stages": {
+        "setup": {
+          "medianSeconds": 0.012624779499674332,
+          "minSeconds": 0.0111394340001425,
+          "maxSeconds": 0.014468415000010282,
+          "samplesSeconds": [
+            0.0111394340001425,
+            0.012438732999726199,
+            0.012882365001132712,
+            0.01177328099947772,
+            0.012810825999622466,
+            0.014468415000010282
+          ]
+        },
+        "generation": {
+          "medianSeconds": 0.18828836599914212,
+          "minSeconds": 0.17515744199954497,
+          "maxSeconds": 0.2614367989990569,
+          "samplesSeconds": [
+            0.17732129599971813,
+            0.23850239400053397,
+            0.2614367989990569,
+            0.17515744199954497,
+            0.17904202899990196,
+            0.19753470299838227
+          ]
+        },
+        "serialization": {
+          "medianSeconds": 0.0031392480004797108,
+          "minSeconds": 0.0028200209999340586,
+          "maxSeconds": 0.004161451000982197,
+          "samplesSeconds": [
+            0.0028200209999340586,
+            0.0028678130001935642,
+            0.004161451000982197,
+            0.0031587320008839015,
+            0.00311976400007552,
+            0.0038477390007756185
+          ]
+        },
+        "certificate": {
+          "medianSeconds": 1.0013326684993444,
+          "minSeconds": 0.8859561659992323,
+          "maxSeconds": 1.1251973649996216,
+          "samplesSeconds": [
+            0.8859561659992323,
+            1.064956488999087,
+            1.0707817689999501,
+            1.1251973649996216,
+            0.9356523410006048,
+            0.9377088479996019
+          ]
+        }
+      }
+    }
+  ],
+  "sourceHashes": {
+    "target_benchmark.py": "1980bbc053fe864f8d0281d9a8c7d51fdcde3797d43bcb523be336968c39fdbf",
+    "optimized_solver.py": "a35760ff78e5485882517af88ae9856bbe6256934d9b2899cb4575d6fe8c26b1",
+    "solver.py": "1577802a90d39e6a2d9656a4e2c89e9e1624e0dc47f4f437deedc560ce775852",
+    "certify.py": "96adbd6f17370e9dcad995dc711b1876f540f47e9346f4c02131365de5de9732",
+    "w2_reference.py": "a043661ca14f92a639c410c486fb2d521f2b0ad422d91c8c22befdf8bf47a3ff"
+  },
+  "scope": "Local implementation timings on one short-time W test. Optimized RK4 uses real-odd coefficients and interior pairs during evolution. Full residual certification is unchanged. This does not establish general superiority, true-error ordering or the paper global theorem."
+}

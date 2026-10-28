@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N2_dt128 residual certificate</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#142d36;background:#f4faf8;max-width:920px;margin:auto;padding:28px}a{color:#096750}h1{line-height:1.2}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:18px;border-radius:12px;font:14px/1.6 ui-monospace,monospace}table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #c8d9d5;text-align:left}.note{padding:18px;background:#e1f2eb;border-radius:12px}code{overflow-wrap:anywhere}</style><p><a href="../solver.html">← Flow solver</a> · <a href="../math-note.html">Mathematical argument</a></p>
+        <h1>Finite-time residual certificate · N2_dt128</h1>
+        <p class="note">For the exact rational reconstructed field, normalized spatial L² error ≤ <strong>0.011499</strong> throughout 0 ≤ t ≤ 1/4. This is a spatial RMS velocity error, not a pointwise error or percentage.</p>
+        <p>Unforced incompressible Navier–Stokes on the 2π-periodic torus, viscosity 1, initial velocity W = (sin z, sin x, sin y). The relative-energy argument bounds distance to any Leray–Hopf energy-admissible weak solution. The code and argument are available for independent review; this is not a formal proof of the preprint.</p>
+        <table><tr><th>Reference modes</th><td>32</td></tr><tr><th>Full residual support</th><td>185 modes (including zero)</td></tr><tr><th>Step</th><td>1/128</td></tr><tr><th>Initial error</th><td>Exactly zero</td></tr><tr><th>Exact final upper bound</th><td><code>13256309641485313/1152921504606846976</code></td></tr></table>
+        <p><a href="certificate_N2_dt128.json">Raw certificate JSON</a> · <a href="certificate_N2_dt128.reconstruction.json">Exact rational reconstruction</a> · <a href="../solver-kit.zip">Runnable source and data ZIP</a></p>
+        <p>All convolution output modes are included. Whole-step residuals use quadratic Bernstein convexity. Root, exponential and propagation estimates use directed exact rational arithmetic. The bound applies to the saved rational reconstruction; a new floating-point browser run has only numerical diagnostics until independently certified.</p>
+        <h2>Recorded provenance</h2><pre>{
+  &quot;source_npz_sha256&quot;: &quot;7bd4e005894ec77efc23a736a34ab07e9dba304fe44d60e3c94ab8cc46ca676b&quot;,
+  &quot;reconstruction_canonical_sha256&quot;: &quot;28c6a7240e331981b94432ab263f87b6a39ff8400e69a2e7247a375540031a29&quot;,
+  &quot;checker_sha256&quot;: &quot;96adbd6f17370e9dcad995dc711b1876f540f47e9346f4c02131365de5de9732&quot;,
+  &quot;method&quot;: {
+    &quot;reference&quot;: &quot;exactly divergence-free conjugate-symmetric finite Fourier endpoints; linear time interpolation&quot;,
+    &quot;residual&quot;: &quot;exact full Fourier convolution and exact Leray projection; quadratic Bernstein coefficients bound the whole step&quot;,
+    &quot;strain&quot;: &quot;sum over all modes of sqrt(|k|^2*|vhat_k|^2/2), maximum of endpoint bounds&quot;,
+    &quot;square_root&quot;: &quot;integer isqrt with upward dyadic rounding&quot;,
+    &quot;exponential&quot;: &quot;degree &gt;=18 rational Taylor polynomial plus geometric positive-tail bound and upward rounding&quot;,
+    &quot;propagation&quot;: &quot;E_next=round_up(exp_upper(L*h)*(E+h*R))&quot;
+  }
+}</pre>
+        <p>This finite-time standard energy estimate does not establish uniqueness, smoothness, the manuscript’s global Picard theorem, novelty, or industrial superiority. Prepared with AI assistance for Rushikesh Murlidhar Walke.</p></html>

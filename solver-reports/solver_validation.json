@@ -1,0 +1,149 @@
+{
+  "scope": "Floating point solver validation; not rigorous PDE error bounds",
+  "exact_shear_RK4": {
+    "errors": [
+      {
+        "dt": 0.0625,
+        "max_coefficient_error": 1.3041018098736146e-08
+      },
+      {
+        "dt": 0.03125,
+        "max_coefficient_error": 7.940890167645875e-10
+      },
+      {
+        "dt": 0.015625,
+        "max_coefficient_error": 4.8988202383526414e-11
+      }
+    ],
+    "error_ratios": [
+      16.422614874929362,
+      16.209801097572445
+    ]
+  },
+  "generic_field_energy_identity": {
+    "A0": 1.5355436000659362,
+    "A1": 3.586823629781843,
+    "A_minus_1": 0.7163881758813814,
+    "energy_half_mean_square": 0.011484100640775706,
+    "max_divergence_coefficient": 5.485677294651096e-18,
+    "max_reality_defect": 0.0,
+    "energy_rhs": -0.13221046115376509,
+    "viscous_dissipation": 0.13221046115376509,
+    "energy_identity_abs_residual": 0.0
+  },
+  "direct_convolution_max_difference": 0.0,
+  "trajectories": [
+    {
+      "file": "trajectory_N2_dt64.npz",
+      "cutoff": 2,
+      "dt": 0.015625,
+      "steps": 16,
+      "modes": 32,
+      "seconds": 0.010934244999589282,
+      "final": {
+        "A0": 2.7615290901664484,
+        "A1": 2.948430172443107,
+        "A_minus_1": 2.629370067477518,
+        "energy_half_mean_square": 0.4532776227885437,
+        "max_divergence_coefficient": 3.6019455144520865e-19,
+        "max_reality_defect": 2.5578486144337925e-21,
+        "energy_rhs": -0.923521804007196,
+        "viscous_dissipation": 0.923521804007196,
+        "energy_identity_abs_residual": 0.0
+      },
+      "max_divergence_over_all_steps": 3.6019455144520865e-19,
+      "max_reality_defect_over_all_steps": 2.5578486144337925e-21
+    },
+    {
+      "file": "trajectory_N2_dt256.npz",
+      "cutoff": 2,
+      "dt": 0.00390625,
+      "steps": 64,
+      "modes": 32,
+      "seconds": 0.038444701000116765,
+      "final": {
+        "A0": 2.7615290974714863,
+        "A1": 2.948430182138238,
+        "A_minus_1": 2.629370073092505,
+        "energy_half_mean_square": 0.45327762359650636,
+        "max_divergence_coefficient": 5.583921836417394e-19,
+        "max_reality_defect": 5.940007385976589e-21,
+        "energy_rhs": -0.9235218060570585,
+        "viscous_dissipation": 0.9235218060570585,
+        "energy_identity_abs_residual": 0.0
+      },
+      "max_divergence_over_all_steps": 5.583921836417394e-19,
+      "max_reality_defect_over_all_steps": 5.940007385976589e-21
+    },
+    {
+      "file": "trajectory_N3_dt256.npz",
+      "cutoff": 3,
+      "dt": 0.00390625,
+      "steps": 64,
+      "modes": 122,
+      "seconds": 0.3538396739986638,
+      "final": {
+        "A0": 2.783641016909834,
+        "A1": 2.9994642854710056,
+        "A_minus_1": 2.638903114842392,
+        "energy_half_mean_square": 0.4532734044425899,
+        "max_divergence_coefficient": 6.2460925414456575e-19,
+        "max_reality_defect": 6.938893903907228e-18,
+        "energy_rhs": -0.9235763910367903,
+        "viscous_dissipation": 0.9235763910367905,
+        "energy_identity_abs_residual": 1.1102230246251565e-16
+      },
+      "max_divergence_over_all_steps": 6.2460925414456575e-19,
+      "max_reality_defect_over_all_steps": 6.938893903907228e-18
+    },
+    {
+      "file": "trajectory_N3_dt512.npz",
+      "cutoff": 3,
+      "dt": 0.001953125,
+      "steps": 128,
+      "modes": 122,
+      "seconds": 0.9154978259994095,
+      "final": {
+        "A0": 2.7836410168825836,
+        "A1": 2.9994642853878237,
+        "A_minus_1": 2.638903114837982,
+        "energy_half_mean_square": 0.4532734044452559,
+        "max_divergence_coefficient": 5.105556946098868e-19,
+        "max_reality_defect": 1.3877787807814457e-17,
+        "energy_rhs": -0.9235763910429101,
+        "viscous_dissipation": 0.9235763910429103,
+        "energy_identity_abs_residual": 2.220446049250313e-16
+      },
+      "max_divergence_over_all_steps": 5.105556946098868e-19,
+      "max_reality_defect_over_all_steps": 1.3877787807814457e-17
+    },
+    {
+      "file": "trajectory_N4_dt256.npz",
+      "cutoff": 4,
+      "dt": 0.00390625,
+      "steps": 64,
+      "modes": 256,
+      "seconds": 1.8758572490005463,
+      "final": {
+        "A0": 2.7842697374235215,
+        "A1": 3.0015120968482583,
+        "A_minus_1": 2.639095970425906,
+        "energy_half_mean_square": 0.4532734029408476,
+        "max_divergence_coefficient": 5.413975822145858e-19,
+        "max_reality_defect": 6.938893903907228e-18,
+        "energy_rhs": -0.923576412049874,
+        "viscous_dissipation": 0.923576412049874,
+        "energy_identity_abs_residual": 0.0
+      },
+      "max_divergence_over_all_steps": 5.477795615976114e-19,
+      "max_reality_defect_over_all_steps": 6.938893903907228e-18
+    }
+  ],
+  "empirical_endpoint_A0_differences_not_bounds": {
+    "N3_dt256_vs_dt512": 8.574459962253348e-11,
+    "N2_vs_N3_dt256": 0.023550617488137946,
+    "N3_vs_N4_dt256": 0.0006596138195385928
+  },
+  "elapsed_seconds": 3.3826069009992352,
+  "status": "ALL_CHECKS_PASSED"
+}

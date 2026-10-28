@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "checks": {
+    "analytic_linear_shear": {
+      "pass": true,
+      "bernstein_l2_squared": [
+        "0",
+        "1/128",
+        "1/32"
+      ]
+    },
+    "directed_arithmetic_boundaries": {
+      "pass": true
+    },
+    "exterior_residual_present": {
+      "pass": true,
+      "full_modes": 829,
+      "interior_modes": 122
+    },
+    "midpoint_perturbation_detected": {
+      "pass": true,
+      "normal_error_upper": "2044319562600363/576460752303423488",
+      "perturbed_error_upper": "274260588757668229/1152921504606846976",
+      "ratio_approx": 67.07869791374748
+    }
+  }
+}

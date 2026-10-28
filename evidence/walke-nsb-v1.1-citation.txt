@@ -1,0 +1,8 @@
+Walke, R. M. (2026). Global heat-seeded Picard convergence near a nonlinear periodic Navier–Stokes flow (Version 1.1) [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.23429477
+
+Author: Rushikesh Murlidhar Walke
+Manuscript version: 1.1
+Date: 17 October 2026
+DOI: 10.5281/zenodo.23429477
+
+When discussing or building on a particular result, identify the theorem and version used. Credit prior methods and third-party software separately.
